@@ -33,7 +33,8 @@ Google Scholar is coming soon.
 - Python: 3.8
 - CUDA: 12.2
 - Toolkit: Pytorch 1.13
-- mmdet: 3.2.0 
+- mmdet: 3.2.0
+- GPU: RTX 4090
 
 ## Usage
 
