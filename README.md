@@ -4,13 +4,9 @@ We delve into the distinction between layer attention and the general attention 
 
 SLA (Static Layer Attention Architecture):
 
-<div style="text-align: center;">
-  <img src="images/SLA.png" width="300" alt="DLA"/>
-</div>
+<img src="images/SLA.png" width="300" alt="DLA"/><br/>
 
-
-
-DLA (Dynamic Layer Attention Architecture
+DLA (Dynamic Layer Attention Architecture:
 
 <img src="images/DLA.png" width="300" alt="DLA"/><br/>
 
