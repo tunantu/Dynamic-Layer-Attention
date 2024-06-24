@@ -2,7 +2,7 @@
 
 We delve into the distinction between layer attention and the general attention mechanism, noting that existing layer attention methods achieve layer interaction on fixed feature maps in a static manner. To restore the dynamic context representation capability of the attention mechanism, we propose a Dynamic Layer Attention (DLA) architecture.
 
-[Images here](https://github.com/tunantu/Dynamic-Layer-Attention/tree/main/images/DLA.png)
+![Images here](https://github.com/tunantu/Dynamic-Layer-Attention/main/images/DLA.png)
 
 ## News
 Our paper has been accepted to IJCAI 2024. 
