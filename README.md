@@ -16,8 +16,6 @@ Our paper has been accepted by IJCAI 2024.
 
 Here is the arXiv link: https://arxiv.org/abs/2406.13392
 
-Google Scholar is coming soon.
-
 ##  Installation
 
 ### Requirements
@@ -60,4 +58,14 @@ Then, you could train a faster_rcnn with our DLA on ResNet-50 using 2 GPUs (batc
 
 ```bash
 CUDA_VISIBLE_DEVICES=0,1 python tools/train.py configs/faster_rcnn/faster_rcnn_r50dlal_fpn_1x_coco.py --cfg-options data.samples_per_gpu=8
+```
+
+## Citing
+```bash
+@article{wang2024strengthening,
+  title={Strengthening Layer Interaction via Dynamic Layer Attention},
+  author={Wang, Kaishen and Xia, Xun and Liu, Jian and Yi, Zhang and He, Tao},
+  journal={arXiv preprint arXiv:2406.13392},
+  year={2024}
+}
 ```
