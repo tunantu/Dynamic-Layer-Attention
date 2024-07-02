@@ -72,7 +72,6 @@ class mrla_base_layer(nn.Module):
         # feature descriptor on the global spatial information
         y = self.avg_pool(x) # [b, c, 1, 1]
         y = y.squeeze(-1).transpose(-1, -2) # [b, 1, c]
-        
         Q = self.Wq(y) # Q: [b, 1, c] 
         k = self.Wk(y) # k: [b, 1, c]
         v = self.Wv(x) # v: [b, c, h, w]
@@ -92,30 +91,16 @@ class mrla_base_layer(nn.Module):
         V = rearrange(V, 'b t (g d) h w -> b g t d h w', g=self.heads, d=int(c/self.heads)) # [b, g, t, c/g, h, w]
         atten = torch.einsum('... i d, ... j d -> ... i j', Q, K) * self._norm_fact
         atten = self.softmax(atten)
-
-
-        
-        print(atten.shape)
-        print(atten[0][0])
-
-
-        
         V = rearrange(V, 'b g t d h w -> b g t (d h w)')
-    
         # output = atten @ V # [b g 1 (c/g h w)]
         output = torch.einsum('bgit, bgtj -> bgij', atten, V) 
         output = output.unsqueeze(2).reshape(b, c, h, w)
-        
         return output, output_K, output_V
-
-
-
 
 def conv3x3(in_planes, out_planes, stride=1):
     "3x3 convolution with padding"
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride,
                      padding=1, bias=False)
-
 
 class mrla_module(nn.Module):
     dim_perhead = 32  
@@ -268,8 +253,6 @@ class ResNet(nn.Module):
         self.inplanes = planes * block.expansion
         for i in range(1, blocks):
             layers.append(block(self.inplanes,planes, drop_path = drop_path))
-
-
         return nn.ModuleList(layers)
 
     def forward_features(self, x):
@@ -278,7 +261,6 @@ class ResNet(nn.Module):
         x = self.relu(x)
         k = None
         v = None
-        
         for layers in self.stages:
             for layer in layers:
                 x, k, v = layer(x, k, v)
@@ -288,7 +270,6 @@ class ResNet(nn.Module):
         x = self.avgpool(x)
         x = x.view(x.size(0), -1)
         x = self.fc(x)
-
         return x
 
 def mrla_base(**kwargs):
@@ -296,4 +277,3 @@ def mrla_base(**kwargs):
     Constructs a ResNet model.
     """
     return ResNet(**kwargs)
-
